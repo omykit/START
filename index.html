@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Ordering System - Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Adding a Google Font (similar to Albaik's style) -->
+    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Foodie's Paradise</h1>
+            <p>Delicious meals delivered to your door!</p>
+        </header>
+
+        <!-- Display Menu -->
+        <div id="menu-container">
+            <h2>Our Menu</h2>
+            <ul id="menu-list"></ul>
+        </div>
+
+        <!-- Order Form -->
+        <div id="order-form">
+            <h2>Place Your Order</h2>
+            <form id="order-form">
+                <label for="customer-id">Customer ID:</label>
+                <input type="number" id="customer-id" required>
+
+                <label for="menu-item">Menu Item ID:</label>
+                <input type="number" id="menu-item" required>
+
+                <label for="quantity">Quantity:</label>
+                <input type="number" id="quantity" required>
+
+                <button type="submit">Place Order</button>
+            </form>
+        </div>
+
+        <div id="order-status">
+            <h2>Your Order Status</h2>
+            <p id="status-message"></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

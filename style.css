@@ -1,0 +1,116 @@
+/* Apply Google Font */
+body {
+    font-family: 'Anton', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* General container */
+.container {
+    width: 80%;
+    margin: 0 auto;
+    padding-top: 20px;
+}
+
+/* Header */
+header {
+    background-color: #f44336; /* Red similar to Albaik */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+header h1 {
+    font-size: 3em;
+    margin: 0;
+}
+
+header p {
+    font-size: 1.2em;
+}
+
+/* Menu section */
+#menu-container {
+    margin-top: 30px;
+}
+
+#menu-container h2 {
+    font-size: 2em;
+    color: #f44336;
+}
+
+#menu-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#menu-list li {
+    padding: 10px;
+    margin: 10px 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    font-size: 1.2em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#menu-list li span {
+    font-weight: bold;
+}
+
+/* Order Form */
+#order-form {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+#order-form h2 {
+    color: #f44336;
+}
+
+#order-form label {
+    font-size: 1.1em;
+    margin-top: 10px;
+    display: block;
+}
+
+#order-form input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 1em;
+}
+
+#order-form button {
+    background-color: #f44336;
+    color: white;
+    padding: 12px;
+    font-size: 1.2em;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#order-form button:hover {
+    background-color: #c1352e;
+}
+
+/* Order Status Section */
+#order-status {
+    margin-top: 30px;
+}
+
+#status-message {
+    font-size: 1.5em;
+    color: #4caf50;
+    font-weight: bold;
+}
