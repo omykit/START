@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife MVP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="logo">
+            <img src="D:\EcoLife MVP\EcoLife.png" alt="EcoLifeLogo">
+        </div>
+        <div id="intro">
+            <h2>Welcome to EcoLife MVP</h2>
+            <p>EcoLife MVP helps you track and reduce your carbon footprint.</p>
+        </div>
+        <div id="eco-tip">
+            <h2>Eco Tip of the Day</h2>
+            <p id="eco-tip-text">Loading...</p>
+        </div>
+        <div id="calculator">
+            <h2>Carbon Footprint Calculator</h2>
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" placeholder="Enter your name">
+            <br>
+            <label for="electricity">Electricity Usage (kWh):</label>
+            <input type="number" id="electricity" placeholder="Enter kWh">
+            <br>
+            <label for="kilometers">Kilometers Driven:</label>
+            <input type="number" id="kilometers" placeholder="Enter kilometers">
+            <br>
+            <button onclick="calculateFootprint()">Calculate</button>
+            <p id="result"></p>
+            <p id="statement"></p>
+            <div id="tips" style="display:none;">
+                <h3>Tips to Reduce Your Digital Footprint</h3>
+                <ul id="tips-list">
+                    <!-- Tips will be added here by JavaScript -->
+                </ul>
+            </div>
+        </div>
+
+        <!-- Button to redirect to the new page with the questionnaire -->
+        <div id="additional-tools">
+            <button onclick="window.location.href='questionnaire.html'">Take the Daily Activity Questionnaire</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife MVP Questionnaire</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="container">
+        <div id="intro">
+            <h2>Daily Activity Questionnaire</h2>
+            <p>Please answer the following questions to get personalized suggestions for reducing your digital footprint.</p>
+        </div>
+
+        <div id="questionnaire">
+            <form id="activityForm">
+                <label for="deviceUsage">Hours spent on electronic devices per day:</label>
+                <input type="number" id="deviceUsage" name="deviceUsage" min="0" max="24" placeholder="Enter hours">
+                <br>
+
+                <label for="screenBrightness">Is your screen brightness typically high? (Yes/No)</label>
+                <input type="text" id="screenBrightness" name="screenBrightness" placeholder="Yes or No">
+                <br>
+
+                <label for="streaming">Do you stream video content daily? (Yes/No)</label>
+                <input type="text" id="streaming" name="streaming" placeholder="Yes or No">
+                <br>
+
+                <label for="travelMethod">Primary mode of transportation (Car, Bike, Public Transport):</label>
+                <input type="text" id="travelMethod" name="travelMethod" placeholder="Enter your transport mode">
+                <br>
+
+                <button type="button" onclick="processQuestionnaire()">Submit</button>
+            </form>
+
+            <div id="suggestions" style="display:none;">
+                <h3>Your Personalized Suggestions</h3>
+                <ul id="suggestions-list">
+                    <!-- Suggestions will be added here by JavaScript -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script src="questionnaire.js"></script>
+</body>
+
+</html>
+------------------------------------------------------------------------------
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to bottom, #d0f0c0, #a2c2a1); /* Light green gradient background */
+}
+
+#container {
+    width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+#logo img {
+    width: 150px; /* Adjust the size of the logo */
+    height: auto;
+}
+
+#logo h1 {
+    font-style: italic;
+    color: #009900;
+    background: linear-gradient(to right, #009900, #66cc66); /* Green gradient for headings */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+}
+
+h2 {
+    color: #fff;
+    background: linear-gradient(to right, #009900, #66cc66); /* Green gradient for headings */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+#intro {
+    margin-bottom: 20px;
+}
+
+#eco-tip, #calculator {
+    margin-bottom: 20px;
+}
+
+#eco-tip-text {
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+input[type="text"], input[type="number"] {
+    width: calc(100% - 22px);
+    padding: 10px;
+    margin-top: 5px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: linear-gradient(to right, #fbe8e8, #f2d0d0); /* Skin color gradient for text boxes */
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#result, #statement {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#tips {
+    margin-top: 20px;
+    font-size: 16px;
+}
+
+#tips ul {
+    list-style-type: disc;
+    margin-left: 20px;
+}
+---------------------------------------------------------------------------------
+function processQuestionnaire() {
+    const deviceUsage = parseInt(document.getElementById('deviceUsage').value) || 0;
+    const screenBrightness = document.getElementById('screenBrightness').value.toLowerCase();
+    const streaming = document.getElementById('streaming').value.toLowerCase();
+    const travelMethod = document.getElementById('travelMethod').value.toLowerCase();
+
+    const suggestions = [];
+
+    // Analyze device usage
+    if (deviceUsage > 8) {
+        suggestions.push("Consider reducing your screen time or taking breaks during the day to save energy.");
+    } else {
+        suggestions.push("Your device usage is within a healthy range. Keep it up!");
+    }
+
+    // Analyze screen brightness
+    if (screenBrightness === 'yes') {
+        suggestions.push("Lower your screen brightness to conserve energy and reduce eye strain.");
+    } else {
+        suggestions.push("Great! Keeping your screen brightness low helps save energy.");
+    }
+
+    // Analyze streaming habits
+    if (streaming === 'yes') {
+        suggestions.push("Try to reduce video streaming or watch at lower resolutions to conserve data and energy.");
+    } else {
+        suggestions.push("Good job! Avoiding excessive video streaming is eco-friendly.");
+    }
+
+    // Analyze transportation
+    if (travelMethod === 'car') {
+        suggestions.push("Consider carpooling or using public transportation to reduce your carbon footprint.");
+    } else if (travelMethod === 'bike') {
+        suggestions.push("Awesome! Using a bike is one of the best ways to reduce your carbon footprint.");
+    } else if (travelMethod === 'public transport') {
+        suggestions.push("Great! Public transport is a more eco-friendly choice than driving alone.");
+    }
+
+    // Display the suggestions
+    const suggestionsList = document.getElementById('suggestions-list');
+    suggestionsList.innerHTML = '';
+    suggestions.forEach(suggestion => {
+        const li = document.createElement('li');
+        li.textContent = suggestion;
+        suggestionsList.appendChild(li);
+    });
+
+    // Show the suggestions section
+    document.getElementById('suggestions').style.display = 'block';
+}

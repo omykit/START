@@ -1,0 +1,5 @@
+1: Vegamovies (For Hollywood related movies and web series).
+2: Dotmovies (For Bollywood related movies and Web Series).
+3: Movieverse (For Both Bollywood and Hollywood related movies and Web Series).
+4: HdTodayTv (To watch movies and web series online).
+5: quitt.net (To watch movies and web series online) (VPN required).

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Electricity Usage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2C6B2F;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #43a047;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #222;
+        }
+
+        footer {
+            background-color: #2C6B2F;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
+
+        .suggestions {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .suggestions ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Electricity Usage Calculator</h1>
+    <p>Estimate your daily and monthly electricity consumption and get suggestions to reduce your usage.</p>
+
+    <div class="form-group">
+        <label for="power">Power Consumption (Watts):</label>
+        <input type="number" id="power" placeholder="Enter power of device (in watts)" required>
+    </div>
+
+    <div class="form-group">
+        <label for="hours">Usage per Day (hours):</label>
+        <input type="number" id="hours" placeholder="Enter hours used per day" required>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Electricity Price per kWh (in Rupees(₹)):</label>
+        <input type="number" id="price" placeholder="Enter electricity price per kWh" required>
+    </div>
+
+    <button onclick="calculateElectricityUsage()">Calculate</button>
+
+    <div class="result" id="electricity-result"></div>
+
+    <div class="suggestions" id="electricity-suggestions"></div>
+</div>
+
+<script>
+    function calculateElectricityUsage() {
+        const power = parseFloat(document.getElementById('power').value);
+        const hours = parseFloat(document.getElementById('hours').value);
+        const price = parseFloat(document.getElementById('price').value);
+
+        if (!isNaN(power) && !isNaN(hours) && !isNaN(price)) {
+            const dailyUsage = (power * hours) / 1000; // in kWh
+            const monthlyUsage = dailyUsage * 30;
+            const monthlyCost = monthlyUsage * price;
+document.getElementById('electricity-result').innerHTML = 
+ `Estimated Daily Usage: ${dailyUsage.toFixed(2)} kWh <br> Estimated Monthly Usage: ${monthlyUsage.toFixed(2)} kWh <br> Estimated Monthly Cost: ${monthlyCost.toFixed(2)}`;
+
+            provideSuggestions(dailyUsage);
+        } else {
+            document.getElementById('electricity-result').innerHTML = 'Please enter valid numbers.';
+        }
+    }
+
+    function provideSuggestions(dailyUsage) {
+        let suggestions = "<h3>Suggestions to Reduce Electricity Usage:</h3><ul>";
+
+        if (dailyUsage > 10) {
+            suggestions += "<li>Consider using energy-efficient appliances to reduce power consumption.</li>";
+            suggestions += "<li>Switch to LED lighting, which consumes significantly less power.</li>";
+        } else {
+            suggestions += "<li>Your electricity usage is moderate, but consider optimizing the usage of devices when they are not in use.</li>";
+        }
+
+        if (dailyUsage > 5) {
+            suggestions += "<li>Use power strips to easily turn off multiple devices at once.</li>";
+        }
+
+        suggestions += "<li>Unplug devices when they are not in use to avoid standby power consumption.</li>";
+        suggestions += "</ul>";
+
+        document.getElementById('electricity-suggestions').innerHTML = suggestions;
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 EcoLife MVP</p>
+</footer>
+
+</body>
+</html>

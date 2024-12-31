@@ -1,0 +1,1 @@
+create table customer(customerid int, firstname varchar(50), lastname varchar(50), email varchar(50), phonenumber varchar(15), addressline1 varchar(100), addressline2 varchar(100), city varchar(50), state varchar(50), zipcode varchar(50), country varchar(50), dateofbirth date);
