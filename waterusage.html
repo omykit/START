@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Usage Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #2C6B2F;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border-radius: 4px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #43a047;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #222;
+        }
+        
+        footer {
+            background-color: #2C6B2F;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
+
+        .suggestions {
+            margin-top: 20px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-left: 4px solid #4CAF50;
+        }
+
+        .suggestions ul {
+            padding-left: 20px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Water Usage Calculator</h1>
+    <p>Estimate your daily and monthly water usage, and get tips to reduce water consumption.</p>
+
+    <div class="form-group">
+        <label for="water-usage">Water Usage per Day (liters):</label>
+        <input type="number" id="water-usage" placeholder="Enter water usage per day in liters" required>
+    </div>
+
+    <div class="form-group">
+        <label for="price">Water Cost per Liter (in Rupees):</label>
+        <input type="number" id="price" placeholder="Enter cost per liter of water" required>
+    </div>
+
+    <button onclick="calculateWaterUsage()">Calculate</button>
+
+    <div class="result" id="water-result"></div>
+
+    <div class="suggestions" id="water-suggestions"></div>
+</div>
+
+<script>
+    function calculateWaterUsage() {
+        const waterUsage = parseFloat(document.getElementById('water-usage').value);
+        const price = parseFloat(document.getElementById('price').value);
+
+        if (!isNaN(waterUsage) && !isNaN(price)) {
+            const monthlyUsage = waterUsage * 30;
+            const monthlyCost = monthlyUsage * price;
+
+            document.getElementById('water-result').innerHTML = 
+                `Estimated Monthly Water Usage: ${monthlyUsage.toFixed(2)} liters <br> Estimated Monthly Cost: ${monthlyCost.toFixed(2)} Rupees per unit`;
+
+            provideSuggestions(waterUsage);
+        } else {
+            document.getElementById('water-result').innerHTML = 'Please enter valid numbers.';
+        }
+    }
+
+    function provideSuggestions(waterUsage) {
+        let suggestions = "<h3>Tips to Reduce Water Consumption:</h3><ul>";
+
+        if (waterUsage > 200) {
+            suggestions += "<li>Install water-efficient fixtures like low-flow showerheads and faucets.</li>";
+            suggestions += "<li>Reduce shower time to save water.</li>";
+        } else {
+            suggestions += "<li>Your water usage is moderate. Ensure that taps are not left running unnecessarily.</li>";
+        }
+
+        suggestions += "<li>Fix any leaks in your plumbing system to avoid water wastage.</li>";
+        suggestions += "<li>Use a broom instead of a hose to clean driveways and sidewalks.</li>";
+        suggestions += "<li>Water your plants during the early morning or late evening to minimize evaporation.</li>";
+        suggestions += "</ul>";
+
+        document.getElementById('water-suggestions').innerHTML = suggestions;
+    }
+</script>
+
+<footer>
+    <p>&copy; 2024 EcoLife MVP</p>
+</footer>
+
+</body>
+</html>

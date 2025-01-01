@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife Tools - Reduce Your Digital Footprint</title>
+    <style>
+        /* Basic reset and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #2C6B2F;
+            color: white;
+            padding: 1rem 0;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        main {
+            padding: 2rem 0;
+        }
+
+        .section {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+        }
+
+        h2 {
+            color: #2C6B2F;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        input[type="number"] {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #43a047;
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        #result {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        footer {
+            background-color: #2C6B2F;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>EcoLife MVP - Additional Tools</h1>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <h2>Digital Footprint Calculator</h2>
+                <p>Calculate the environmental impact of your digital activities and get tips on reducing your digital carbon footprint.</p>
+                <form id="digital-footprint-form">
+                    <div class="form-group">
+                        <label for="hours-online">Hours Spent Online Per Day:</label>
+                        <input type="number" id="hours-online" placeholder="Enter hours" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email-count">Emails Sent Per Day:</label>
+                        <input type="number" id="email-count" placeholder="Enter number of emails" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="video-hours">Hours of Video Streaming Per Day:</label>
+                        <input type="number" id="video-hours" placeholder="Enter hours of streaming" required>
+                    </div>
+                    <button type="button" onclick="calculateDigitalFootprint()">Calculate</button>
+                </form>
+                <div class="results">
+                    <p id="result"></p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2>Other Tools</h2>
+                <ul>
+                    <li><a href="electricityusage.html">Electricity Usage Calculator</a></li>
+            <li><a href="waterusage.html">Water Usage Calculator</a></li>
+            <li><a href="wastemanager.html">Waste Generation Monitor</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 EcoLife MVP. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Function to calculate the digital footprint
+        function calculateDigitalFootprint() {
+            const hoursOnline = parseFloat(document.getElementById('hours-online').value);
+            const emailCount = parseFloat(document.getElementById('email-count').value);
+            const videoHours = parseFloat(document.getElementById('video-hours').value);
+
+            if (!isNaN(hoursOnline) && !isNaN(emailCount) && !isNaN(videoHours)) {
+                // Example calculation for digital footprint
+                const onlineFootprint = hoursOnline * 0.06; // Approx CO2 per hour online
+                const emailFootprint = emailCount * 0.02; // Approx CO2 per email
+                const videoFootprint = videoHours * 0.1; // Approx CO2 per hour of video streaming
+
+                const totalFootprint = onlineFootprint + emailFootprint + videoFootprint;
+
+                document.getElementById('result').innerHTML = `Your estimated digital footprint is ${totalFootprint.toFixed(2)} kg CO2 per day.`;
+            } else {
+                document.getElementById('result').innerHTML = 'Please fill in all fields.';
+            }
+        }
+    </script>
+</body>
+</html>

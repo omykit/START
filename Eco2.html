@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoLife MVP</title>
+    <style>
+        /* Basic reset and box-sizing */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+
+        /* Container */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        header {
+            background-color: #2C6B2F; /* Dark green header */
+            color: #fff;
+            padding: 1rem 0; /* Increased padding to give more space for content */
+            position: fixed;
+            width: 100%;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between; /* Space between logo, heading, and nav */
+            padding: 0 1rem;
+        }
+
+        header .logo {
+            height: 40px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin: 0; /* Remove margin to align better */
+            text-align: center;
+        }
+
+        header nav {
+            margin-top: 0;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            background: #1b4d3e;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            font-size: 0.9rem;
+        }
+
+        header nav a:hover,
+        header nav a.active {
+            background-color: #1a3c30;
+            transform: translateY(-1px);
+        }
+
+        /* Main Content */
+        main {
+            padding: 6rem 1rem 2rem; /* Add top padding to account for the fixed header */
+        }
+
+        main h1, main h2 {
+            color: #2C6B2F;
+        }
+
+        main .container {
+            padding: 1rem;
+        }
+
+        /* Sections */
+        .section {
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 8px;
+            margin-bottom: 30px; /* Increased margin to create more gap between sections */
+            border: 1px solid #ddd;
+        }
+
+        /* Eco Tip */
+        #eco-tip {
+            background: #e8f5e9;
+            margin-bottom: 30px; /* Added margin to separate from next block */
+        }
+
+        #eco-tip h3 {
+            color: #388e3c;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        #eco-tip p {
+            font-size: 1.2rem;
+        }
+
+        /* Calculator */
+        #calculator {
+            background: #ffffff;
+            margin-bottom: 30px; /* Added margin to separate from next block */
+        }
+
+        #calculator h3 {
+            color: #388e3c;
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+
+        form {
+            display: grid;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            padding: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1rem;
+            color: #333;
+            width: 100%;
+            box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"]:focus,
+        input[type="number"]:focus,
+        textarea:focus {
+            border-color: #4caf50;
+            outline: none;
+            box-shadow: 0 0 8px rgba(76, 175, 80, 0.3);
+        }
+
+        button {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 4px;
+            background-color: #4caf50;
+            color: #fff;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        button:hover {
+            background-color: #43a047;
+            transform: translateY(-2px);
+        }
+
+        .results {
+            margin-top: 20px;
+        }
+
+        #result {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #222;
+        }
+
+        #statement {
+            margin-top: 10px;
+            color: #666;
+        }
+
+        #tips {
+            padding: 10px 0;
+        }
+
+        #tips h4 {
+            font-size: 1.4rem;
+            color: #388e3c;
+            margin-bottom: 10px;
+        }
+
+        #tips-list {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: #333;
+        }
+
+        /* Eco Education */
+        #eco-education {
+            background: #f1f8e9;
+            margin-bottom: 30px; /* Added margin to separate from next block */
+        }
+
+        #eco-education h3,
+        #eco-education h4 {
+            color: #388e3c;
+        }
+
+        #eco-education ul {
+            list-style-type: disc;
+            padding-left: 20px;
+        }
+
+        /* Resources */
+        #resources {
+            background: #f1f8e9;
+            margin-bottom: 30px; /* Added margin to separate from next block */
+        }
+
+        #resources h3 {
+            color: #388e3c;
+        }
+
+        /* Additional Tools */
+        #additional-tools {
+            text-align: center;
+            margin-bottom: 30px; /* Added margin to separate from next block */
+        }
+
+        #additional-tools button {
+            background-color: #f57c00;
+            padding: 12px 20px;
+            color: #fff;
+            border-radius: 4px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #additional-tools button:hover {
+            background-color: #ef6c00;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #2C6B2F;
+            color: white;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 20px;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+
+            .logo {
+                height: 35px;
+            }
+
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header nav a {
+                font-size: 0.8rem;
+                padding: 0.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+         <div class="container header-content">
+        <img src="EcoLife.png" alt="EcoLife Logo" class="logo">
+                            <h1>EcoLife MVP</h1>
+        <nav>
+            <a href="#home" class="nav-link active" onclick="showTab('home')">Home</a>
+            <a href="#about" class="nav-link" onclick="showTab('about')">About</a>
+            <a href="#contact" class="nav-link" onclick="showTab('contact')">Contact</a>
+        </nav>
+
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="section">
+            <div class="container">
+                <h2>Welcome to EcoLife MVP</h2>
+                <p>Track and reduce your carbon footprint with ease. Our tools and resources are designed to help you make a positive impact on the environment.</p>
+
+                <div id="eco-tip">
+                    <h3>Eco Tip of the Day</h3>
+                    <p id="eco-tip-text">Loading...</p>
+                </div>
+
+                <div id="calculator">
+                    <h3>Carbon Footprint Calculator</h3>
+                    <form id="footprint-form">
+                        <div class="form-group">
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" placeholder="Enter your name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="emissions">Estimated Emissions (kg CO2):</label>
+                            <input type="number" id="emissions" placeholder="Enter your emissions" required>
+                        </div>
+                        <button type="button" onclick="calculateFootprint()">Calculate</button>
+                    </form>
+                    <div class="results">
+                        <p id="result"></p>
+                        <p id="statement"></p>
+                        <div id="tips">
+                            <h4>Tips to Reduce Your Footprint:</h4>
+                            <ul id="tips-list">
+                                <!-- Tips will be populated here -->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="eco-education">
+                    <h3>Eco Education</h3>
+                    <p>Learn more about the environment and how you can help:</p>
+                    <ul>
+                        <li>Climate Change</li>
+                        <li>Renewable Energy</li>
+                        <li>Sustainable Living</li>
+                    </ul>
+                </div>
+
+                <div id="resources">
+                    <h3>Additional Resources</h3>
+                    <ul>
+                        <li><a href="https://www.epa.gov/climate-change" target="_blank">EPA Climate Change Resources</a></li>
+                        <li><a href="https://www.worldwildlife.org" target="_blank">WWF - World Wildlife Fund</a></li>
+                        <li><a href="https://www.nature.org" target="_blank">The Nature Conservancy</a></li>
+                    </ul>
+                </div>
+
+                <div id="additional-tools">
+                    <h3>Check Out Our Additional Tools</h3>
+                    <button onclick="window.location.href='tools.html'">Explore Tools</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="about" class="section" style="display:none;">
+            <div class="container">
+                <h2>About Us</h2>
+                <p>EcoLife is dedicated to promoting sustainable living through innovative tools and resources. Our mission is to help individuals and organizations reduce their carbon footprint and make environmentally friendly choices.</p>
+            </div>
+        </section>
+
+        <section id="contact" class="section" style="display:none;">
+            <div class="container">
+                <h2>Contact Us</h2>
+                <p>We would love to hear from you! If you have any questions, comments, or suggestions, please reach out to us.</p>
+                <form>
+                    <div class="form-group">
+                        <label for="contact-name">Name:</label>
+                        <input type="text" id="contact-name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email:</label>
+                        <input type="email" id="contact-email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message:</label>
+                        <textarea id="contact-message" placeholder="Enter your message" rows="4" required></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 EcoLife. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Function to show the selected tab and hide others
+        function showTab(tabId) {
+            // Get all section elements
+            const sections = document.querySelectorAll('main .section');
+            
+            // Iterate through each section
+            sections.forEach(section => {
+                // Display the selected section or hide the others
+                if (section.id === tabId) {
+                    section.style.display = 'block';
+                } else {
+                    section.style.display = 'none';
+                }
+            });
+
+            // Update the navigation links' active state
+            const navLinks = document.querySelectorAll('header nav a');
+            navLinks.forEach(link => {
+                // Add 'active' class to the clicked link and remove it from others
+                if (link.getAttribute('href').substring(1) === tabId) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Initialize the page to show the 'home' section by default
+        document.addEventListener('DOMContentLoaded', () => {
+            showTab('home');
+        });
+
+        // Function to calculate the carbon footprint
+        function calculateFootprint() {
+            const emissions = parseFloat(document.getElementById('emissions').value);
+            let resultText = '';
+            let statement = '';
+            let tipsList = '';
+
+            if (!isNaN(emissions) && emissions > 0) {
+                // Calculate footprint (dummy calculation for demonstration)
+                const footprint = emissions * 0.5; // Example factor for demonstration
+                resultText = `Your estimated footprint is ${footprint.toFixed(2)} kg CO2.`;
+
+                // Add tips
+                tipsList += '<li>Reduce energy consumption by switching to LED bulbs.</li>';
+                tipsList += '<li>Use public transportation or carpool to cut down on emissions.</li>';
+                tipsList += '<li>Adopt a plant-based diet to lower your carbon footprint.</li>';
+
+                statement = `Based on your emissions, here are some tips to help you reduce your carbon footprint:`;
+            } else {
+                resultText = 'Please enter a valid number for emissions.';
+            }
+
+            document.getElementById('result').innerHTML = resultText;
+            document.getElementById('statement').innerHTML = statement;
+            document.getElementById('tips-list').innerHTML = tipsList;
+        }
+
+        // Function to fetch and display eco tip
+        async function fetchEcoTip() {
+            const response = await fetch('https://api.example.com/eco-tip'); // Replace with a real API
+            const data = await response.json();
+            document.getElementById('eco-tip-text').innerText = data.tip;
+        }
+
+        // Initialize eco tip on page load
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchEcoTip();
+        });
+    </script>
+</body>
+</html>
