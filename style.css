@@ -1,116 +1,186 @@
-/* Apply Google Font */
+ General Styling */
 body {
-    font-family: 'Anton', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #f9f9f9;
+    color: #333;
 }
 
-/* General container */
-.container {
-    width: 80%;
-    margin: 0 auto;
-    padding-top: 20px;
-}
-
-/* Header */
+/* Header Styling */
 header {
-    background-color: #f44336; /* Red similar to Albaik */
+    background-color: #ff5722;
     color: white;
-    text-align: center;
     padding: 20px;
+    text-align: center;
+    position: relative;
+}
+
+header .btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+header .btn:hover {
+    background-color: #555;
+}
+
+/* Section Styling */
+section {
+    padding: 20px;
+    margin: 20px;
+    background-color: white;
     border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-header h1 {
-    font-size: 3em;
-    margin: 0;
+.intro p {
+    font-size: 18px;
+    line-height: 1.5;
 }
 
-header p {
-    font-size: 1.2em;
-}
-
-/* Menu section */
-#menu-container {
-    margin-top: 30px;
-}
-
-#menu-container h2 {
-    font-size: 2em;
-    color: #f44336;
-}
-
-#menu-list {
-    list-style-type: none;
-    padding: 0;
-}
-
-#menu-list li {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    font-size: 1.2em;
+/* Menu Gallery */
+.menu-gallery {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
-#menu-list li span {
+.menu-gallery .meal {
+    text-align: center;
+    margin: 10px;
+}
+
+.menu-gallery .meal img {
+    width: 200px;
+    height: 150px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
+}
+
+.menu-gallery .meal p {
+    font-size: 16px;
     font-weight: bold;
 }
 
-/* Order Form */
-#order-form {
-    margin-top: 30px;
-    background-color: #fff;
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: 0 auto;
     padding: 20px;
+    background-color: white;
     border-radius: 10px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-#order-form h2 {
-    color: #f44336;
+form h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-#order-form label {
-    font-size: 1.1em;
-    margin-top: 10px;
-    display: block;
-}
-
-#order-form input {
+form input {
     width: 100%;
     padding: 10px;
     margin: 10px 0;
     border: 1px solid #ddd;
     border-radius: 5px;
-    font-size: 1em;
 }
 
-#order-form button {
-    background-color: #f44336;
+form button {
+    width: 100%;
+    padding: 10px;
+    background-color: #ff5722;
     color: white;
-    padding: 12px;
-    font-size: 1.2em;
     border: none;
-    border-radius: 8px;
+    border-radius: 5px;
+    font-size: 16px;
     cursor: pointer;
 }
 
-#order-form button:hover {
-    background-color: #c1352e;
+form button:hover {
+    background-color: #e64a19;
 }
 
-/* Order Status Section */
-#order-status {
-    margin-top: 30px;
+form p {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
 }
 
-#status-message {
-    font-size: 1.5em;
-    color: #4caf50;
-    font-weight: bold;
+form p a {
+    color: #ff5722;
+    text-decoration: none;
+}
+
+form p a:hover {
+    text-decoration: underline;
+}
+
+/* Order Page Styling */
+.menu-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item img {
+    width: 80px;
+    height: 80px;
+    border-radius: 5px;
+}
+
+.menu-item input {
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+/* Button Styling */
+button {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 20px 0;
+    background-color: #ff5722;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #e64a19;
+}
+
+/* Footer (Optional) */
+footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+    font-size: 14px;
 }

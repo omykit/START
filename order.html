@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Food</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h2>Menu</h2>
+    <form action="/place_order" method="POST">
+        <div class="menu-item">
+            <img src="burger.jpg" alt="Burger">
+            <input type="number" name="burger_quantity" min="0" placeholder="Quantity">
+        </div>
+        <div class="menu-item">
+            <img src="pizza.jpg" alt="Pizza">
+            <input type="number" name="pizza_quantity" min="0" placeholder="Quantity">
+        </div>
+        <div class="menu-item">
+            <img src="pasta.jpg" alt="Pasta">
+            <input type="number" name="pasta_quantity" min="0" placeholder="Quantity">
+        </div>
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>

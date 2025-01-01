@@ -3,47 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Food Ordering System - Restaurant</title>
+    <title>Food Ordering System</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Adding a Google Font (similar to Albaik's style) -->
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Anton&amp;display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Foodie's Paradise</h1>
-            <p>Delicious meals delivered to your door!</p>
-        </header>
-
-        <!-- Display Menu -->
-        <div id="menu-container">
-            <h2>Our Menu</h2>
-            <ul id="menu-list"></ul>
+    <header>
+        <h1>Welcome to Food MS</h1>
+        <button onclick="location.href='login.html'" class="btn">Login</button>
+    </header>
+    <section class="intro">
+        <h2>About Us</h2>
+        <p>Foodie's Paradise offers the best online food ordering experience. Enjoy a variety of meals delivered to your doorstep with just a few clicks!</p>
+    </section>
+    <section class="menu-gallery">
+        <h2>Our Meals</h2>
+        <div class="meal">
+            <img src="burger.jpg" alt="Burger">
+            <p>Burger - $5.99</p>
         </div>
-
-        <!-- Order Form -->
-        <div id="order-form">
-            <h2>Place Your Order</h2>
-            <form id="order-form">
-                <label for="customer-id">Customer ID:</label>
-                <input type="number" id="customer-id" required>
-
-                <label for="menu-item">Menu Item ID:</label>
-                <input type="number" id="menu-item" required>
-
-                <label for="quantity">Quantity:</label>
-                <input type="number" id="quantity" required>
-
-                <button type="submit">Place Order</button>
-            </form>
+        <div class="meal">
+            <img src="pizza.jpg" alt="Pizza">
+            <p>Pizza - $8.99</p>
         </div>
-
-        <div id="order-status">
-            <h2>Your Order Status</h2>
-            <p id="status-message"></p>
+        <div class="meal">
+            <img src="pasta.jpg" alt="Pasta">
+            <p>Pasta - $7.49</p>
         </div>
-    </div>
-
-    <script src="script.js"></script>
+    </section>
 </body>
 </html>
